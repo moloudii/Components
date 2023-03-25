@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro-Object</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict'
+        // Setter && getter
+        let newObj = {
+            name: 'mohammad',
+            family: "moloudi",
+            get age() {
+                return this.userAge;
+            },
+            set age(uAge) {
+                if (uAge < 10) {
+                    throw new Error("Access Denied");
+                }
+                this.userAge = uAge
+            }
+
+        }
+        console.log(newObj);
+        newObj.age = 25;
+        console.log(newObj.age);
+
+        // constructor
+        function secondObj(pName) {
+            let userPassword = "xxcxcsxadadadd";
+            this.name = pName;
+            this.family = "moloudi";
+
+            this.printer = function () {
+                console.log(userPassword);
+            }
+            // setter && getter
+            Object.defineProperties(this, {
+                age: {
+                    get: function () {
+                        return this.userAge;
+                    },
+                    set: function (uAge) {
+                        if (uAge < 10) {
+                            throw new Error("Access Denied")
+                        }
+                        this.userAge = uAge;
+                        console.log("setter");
+                    }
+                }
+            })
+        }
+        let new2 = new secondObj("mohammad");
+        new2.age = 45;
+        console.log(new2.printer());
+        let copyN = newObj;
+        copyN.name = "test";
+        console.log(newObj);
+
+        // Copy Object
+        let copyM = {};
+        Object.assign(copyM, newObj, new2);
+        copyM.name = "test name";
+        console.log(newObj);
+
+        // Optional chaining
+        let user = {}; //a user without "address" property
+        // console.log(user.address.street); // Error
+        console.log(user.address ? user.address.street : undefined);
+        console.log(user.address && user.address.street && user.address.street.name);
+        // Optional chaining
+        console.log(user?.address?.street); //undefined (no Error)
+    </script>
+</body>
+
+</html>
