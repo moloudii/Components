@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP</title>
+</head>
+
+<body>
+
+    <script>
+        function createPerson(name, age, height) {
+            let personObject = {};
+            personObject.name = name;
+            personObject.age = age;
+            personObject.height = height;
+            personObject.sayName = function () {
+                return "My name is: " + personObject.name;
+            }
+
+            return personObject;
+        }
+
+        let mohammad = createPerson("mohammad", 23, 173);
+        let ali = createPerson("ali", 20, 170);
+
+        console.log(mohammad.sayName());
+        console.log(ali.sayName());
+
+
+        function Person(name, age, height) {
+            this.name = name;
+            this.age = age;
+            this.height = height;
+            this.sayName = function () {
+                return "My name is: " + this.name;
+            }
+        }
+        let reza = new Person("Reza", 25, 180);
+        console.log(reza);
+        console.log(reza.sayName());
+    </script>
+</body>
+
+</html>
