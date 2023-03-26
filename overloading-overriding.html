@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>overloading overriding</title>
+</head>
+
+<body>
+
+    <script>
+        class animal {
+            testFields = "I am parent";
+            static myStaticData = "Static ...";
+            constructor(name) {
+                this.animalName = name;
+            }
+            walking() {
+                console.log("..... walking ......");
+            }
+            print() {
+                console.log(animal.myStaticData);
+            }
+        }
+
+        let a1 = new animal();
+        let a2 = new animal();
+        animal.myStaticData = "changed";
+        a1.print();
+        a2.print();
+
+        // overriding
+        class rabbit extends animal {
+            testFields = "I am child";
+            constructor(name, type) {
+                super(name);
+                this.typeName = type;
+            }
+
+            walking() {
+                super.walking();
+                console.log("...... jump ......");
+            }
+        }
+        let rabbit1 = new rabbit("test for name", "Cat");
+        // rabbit1.walking();
+        // console.log(rabbit1);
+        // overloading
+        // class rabbit2 extends animal {
+        //     walking(name) {
+        //         console.log(name);
+        //     }
+        // }
+        // let rabbitTest = new rabbit2();
+        // rabbitTest.walking("mohammad");
+    </script>
+</body>
+
+</html>
