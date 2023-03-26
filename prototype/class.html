@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class</title>
+</head>
+
+<body>
+
+    <script>
+        class animal {
+            constructor() {
+                this.name = "cat";
+            }
+            running() {
+                console.log(this.name);
+                console.log("... running ...");
+            }
+        }
+
+
+        class rabbit extends animal {
+            walk() {
+                console.log("my rabbit is running...");
+            }
+        }
+
+        let myAnimal = new animal();
+        console.log(myAnimal);
+        // myAnimal.running();
+        setTimeout(() => myAnimal.running(), 1000)
+    </script>
+</body>
+
+</html>
