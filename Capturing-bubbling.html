@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)https://up.7learn.com/academy/content/2021-01/4275/bubbling.html -->
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title>شی گرایی در جاوا اسکریپت</title>
+	<style>
+		form {
+			background-color: green;
+			position: relative;
+			width: 150px;
+			height: 150px;
+			text-align: center;
+			cursor: pointer;
+		}
+
+		div {
+			background-color: blue;
+			position: absolute;
+			top: 25px;
+			left: 25px;
+			width: 100px;
+			height: 100px;
+		}
+
+		p {
+			background-color: red;
+			position: absolute;
+			top: 25px;
+			left: 25px;
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			margin: 0;
+		}
+
+		body {
+			line-height: 25px;
+			font-size: 16px;
+		}
+	</style>
+</head>
+
+<body style="text-align: center; zoom: 1;" cz-shortcut-listen="true">
+	<h1>سلام به همه دانشجویان عزیز و برنامه‌نویسان حرفه‌ای آینده</h1>
+	<hr>
+
+	<form id="form" onclick="test(event)">FORM
+		<div>DIV
+			<p>P</p>
+		</div>
+	</form>
+
+	<!-- <form id="form">
+		<button data-action="save">save</button>
+		<button data-action="reset">reset</button>
+		<button data-action="update">update</button>
+	</form> -->
+	<form id="bform">
+		<button data-action="save">save</button>
+		<button data-action="reset">reset</button>
+		<button data-action="update">update</button>
+	</form>
+	<script>
+		'use strict';
+		class eventD {
+			constructor(elem) {
+				this._elem = elem;
+				elem.onclick = this.onclick.bind(this);
+			}
+			onclick(event) {
+				event.preventDefault();
+				console.log(event.target.dataset.action);
+			}
+		}
+		new eventD(bform);
+		// function test(event) {
+		// 	event.target.style.backgroundColor = 'yellow';
+
+		// 	setTimeout(() => {
+		// 		alert("target = " + event.target.tagName + ", this=" + this.tagName);
+		// 		event.target.style.backgroundColor = ''
+		// 	}, 0);
+		// }
+
+		// bubbling
+		// form.onclick = function (event) {
+		// 	event.target.style.backgroundColor = 'yellow';
+
+		// 	// chrome needs some time to paint yellow
+		// 	setTimeout(() => {
+		// 		alert("target = " + event.target.tagName + ", this=" + this.tagName);
+		// 		event.target.style.backgroundColor = ''
+		// 	}, 0);
+		// }
+
+		// capturing
+		// test for capturing
+		// for (let elem of document.querySelectorAll("*")) {
+		// 	elem.addEventListener("click", e => alert(`Capturing: ${elem.tagName}`), true);
+		// 	elem.addEventListener("click", e => alert(`Bubbling: ${elem.tagName}`));
+		// }
+	</script>
+
+</body>
+
+</html>
