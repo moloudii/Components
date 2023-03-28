@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sync-Async</title>
+</head>
+
+<body>
+
+    <script>
+        // Promise
+        // let myPromise = new Promise(function (resolve, reject) {
+        //     throw new Error("some Error");
+        //     setTimeout(() => {
+        //         console.log("1");
+        //         resolve()
+        //     }, 3000);
+        // });
+        // myPromise.then(result => test(), error => alert("ooooops"));
+
+        function test() {
+            console.log("async and sync");
+        }
+
+        // Promise All
+        // let p = Promise.all([
+        //     new Promise(resolve => setTimeout(() => {
+        //         console.log("1"), resolve()
+        //     }, 100), ),
+        //     new Promise(resolve => setTimeout(() => {
+        //         console.log("2"), resolve()
+        //     }, 2000), ),
+        //     new Promise(resolve => setTimeout(() => {
+        //         console.log("3");
+        //         resolve()
+        //     }, 100), )
+        // ])
+
+        // p.then()
+
+        // TEST
+        // let urls = [
+        //     'https://api.github.com/users/remy',
+        //     'https://api.github.com/users/iliakan',
+        //     'https://api.github.com/users/jeresig',
+        // ]
+        // let requests = urls.map(url => fetch(url));
+        // Promise.all(requests)
+        //     .then(responses => responses.forEach(
+        //         response => alert(`${response.url}: ${response.status}`)
+        //     ))
+
+
+
+        // Async & Sync
+        async function test2() {
+            console.log("we are in test 2 function");
+        }
+        test2().then(function () {
+            console.log("test2 finished");
+        })
+        test();
+    </script>
+</body>
+
+</html>
