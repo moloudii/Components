@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="firstForm">
+        <div>DIV
+            <p>P</p>
+        </div>
+    </form>
+
+    <form id="test2" name="secondForm">
+        <input data-validation="notEmpty" type="text" name="family" />
+        <select name="list">
+            <option value="city1">Tehran</option>
+            <option value="city2">Isfahan</option>
+            <option value="city3">Tabriz</option>
+        </select>
+        <button>Save</button>
+    </form>
+
+    <script>
+        'use strict';
+
+        class formValidator {
+            constructor(formElem, autoFocusElem) {
+                this.__formElem = formElem;
+                // this.setFocusOnAllElements(formElem.elements);
+                this.focusHandler();
+                this.submitHandler();
+                autoFocusElem.focus();
+            }
+            submitHandler() {
+                this.__formElem.onsubmit = (event) => {
+                    event.preventDefault();
+                    if (this.__formElem) {
+                        alert("you can't submit, we have error")
+                    } else {
+                        this.__formElem.submit();
+                    }
+                }
+            }
+            // focusin & focusout
+            focusHandler() {
+                this.__formElem.addEventListener('focusin', function (event) {
+                    console.log('focusin on: ');
+                    console.log(event.target);
+                });
+                this.__formElem.addEventListener('focusout', (event) => {
+                    if (event.target.tagName == "BUTTON") return;
+                    if (!(event.target.dataset.validation in this)) {
+                        return;
+                    }
+                    let result = this[event.target.dataset.validation](event.target);
+                    console.log('focusout on: ');
+                    console.log(event.target);
+                    if (result === false) {
+                        this.__error = true;
+                    } else {
+                        this.__error = false;
+                    }
+                })
+            }
+            notEmpty(elem) {
+                if (elem.value.length == 0) {
+                    let error = document.createElement('div');
+                    error.innerText = "Input can 't be empty";
+                    error.classList.add(['alert', 'error']);
+                    elem.after(error);
+                }
+            }
+
+            // Focus & Blur
+            setFocusOnAllElements(elements) {
+                for (let e of elements) {
+                    e.onfocus = function (event) {
+                        console.log("focus on: ");
+                        console.log(event.target);
+                    }
+                    e.onblur = function (event) {
+                        console.log("Blur on: ");
+                        console.log(event.target);
+                    }
+                }
+            }
+        }
+        new formValidator(secondForm, secondForm.elements.family);
+    </script>
+</body>
+
+</html>
