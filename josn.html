@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Sample</title>
+</head>
+
+<body>
+
+    <div id="user"></div>
+</body>
+<script>
+    let userDataStr =
+        '{"name":"mohammad moloudi","favColor":"blue","age":23,"gender":"male","isSingle":true,"success":null,"friends":["payam","hamid","mobin"]}'
+
+    // Convert string to Object
+    let userDataObject = JSON.parse(userDataStr);
+    userDataObject["age"] = 8;
+    console.log(userDataObject['friends'][0]);
+    let UserDivTag = document.getElementById("user");
+    for (let key in userDataObject) {
+        UserDivTag.innerHTML += key + ": " + userDataObject[key] + "<br />";
+    }
+
+    let userDataStrAgain = JSON.stringify(userDataObject);
+    console.log(userDataStrAgain);
+</script>
+
+</html>
