@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destructuring</title>
+</head>
+
+<body>
+
+
+    <script>
+        let myList = [1, 2, 17, 4, 27];
+        const [firstNumber, secondNumber, ...others] = myList;
+        console.log(firstNumber, secondNumber);
+        console.log(others);
+
+        function getItems() {
+            return [10, 15, 20];
+        }
+
+        let [a, b, c = 5] = getItems();
+        console.log(a, b, c);
+
+        let aa = 10;
+        let bb = 20;
+        [aa, bb] = [bb, aa]
+        console.log(aa, bb);
+
+        let obj1 = {
+            name: "mohammad",
+            color: "blue"
+        }
+        let {
+            name: username,
+            color
+        } = obj1;
+        console.log(username, color);
+    </script>
+</body>
+
+</html>
