@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For..of LOOP</title>
+</head>
+
+<body>
+
+    <script>
+        let scores = [80, 90, 70];
+        for (let score of scores) {
+            console.log(score + 5);
+        }
+
+        let colors = ['red', 'green', 'blue'];
+        for (const [index, color] of colors.entries()) {
+            console.log(`${color}is at index ${index}`);
+        }
+
+        let colors2 = new Map();
+        colors2.set('red', '#ff0000');
+        colors2.set('green', '#00ff00');
+        colors2.set('blue', '#0000ff');
+        for (let color of colors2) {
+            console.log(color);
+        }
+
+        const rating = [{
+                user: 'john',
+                score: 3
+            },
+            {
+                user: 'jane',
+                score: 4
+            },
+            {
+                user: 'David',
+                score: 8
+            },
+            {
+                user: 'peter',
+                score: 5
+            },
+        ]
+        let sum = 0;
+        for (const {
+                score
+            } of rating) {
+            sum += score;
+        }
+        console.log(`Total score is: ${sum}`);
+    </script>
+</body>
+
+</html>
