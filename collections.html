@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict'
+
+        let obj1 = {
+            'name': 'mohammad'
+        }
+        let mohammad = {
+            'family': 'moloudi'
+        }
+        let map1 = new Map();
+        map1.set('name', 'moloudi');
+        map1.set(mohammad, 'admin');
+        console.log(obj1);
+        console.log(map1);
+        console.log(map1.get(mohammad));
+        console.log(map1.values());
+        console.log("--------------------------");
+        map1.forEach((val, key) => {
+            console.log(val);
+            console.log(key);
+        })
+
+        console.log("--------------------------");
+        // WeakMap
+        let mohammad2 = {
+            'family': 'moloudi'
+        }
+        let wm = new WeakMap();
+        wm.set(mohammad2, 'admin');
+        console.log(wm);
+        mohammad2 = null;
+        console.log(wm);
+
+
+        // TEST (SET)
+        let persons = ['mobin', 'mohammad', 'ali', 'mohammad', 'mobin', 'mohammad'];
+
+        function uniquePersons(persons) {
+            return [...new Set(persons)];
+        }
+        console.log("TEST RESULT");
+        console.log(uniquePersons(persons));
+    </script>
+</body>
+
+</html>
