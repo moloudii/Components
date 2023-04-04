@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Function</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict'
+
+        function show() {
+            console.log(arguments);
+            return x => x + arguments[0];
+            // return function (x) {
+            //     return x + arguments[0];
+            // }
+        }
+        let display = show(10, 20, 30, 40);
+        console.log(display);
+        console.log(display(5));
+        // display(5);
+    </script>
+</body>
+
+</html>
