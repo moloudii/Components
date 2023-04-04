@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New-target</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        function person(name) {
+            console.log(new.target);
+            if (!new.target) {
+                throw ("person is a constructor and you can't invoke it.");
+            }
+            return name;
+        }
+        // let test1 = person("mohammad");
+        let test2 = new person("moloudi");
+        // console.log(test1);
+        console.log(test2);
+
+        class Person {
+            constructor(name) {
+                this.name = name;
+                console.log(new.target.name);
+            }
+        }
+        class Employee extends Person {
+
+        }
+        class Employer extends Person {
+
+        }
+        let t1 = new Person("T1")
+        let t2 = new Employee("T2")
+        let t3 = new Employer("T3")
+    </script>
+</body>
+
+</html>
