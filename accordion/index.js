@@ -11,15 +11,21 @@
 //   });
 // }
 
-const accordion = document.querySelector(".collapse-content");
-let activeItem;
-accordion.addEventListener("click", (event) => {
-  const current = event.target.closest(".collapse");
-  if (activeItem) {
-    activeItem.classList.remove("open");
-  }
-  if (current) {
-    activeItem = current;
-    event.target.closest(".collapse").classList.add("open");
-  }
-});
+const accordions = document.querySelectorAll("[data-accordion]");
+for (let i = 0; i < accordions.length; i++) {
+  let activeItem;
+  accordions[i].addEventListener("click", (event) => {
+    const current = event.target;
+    const target =
+      current.hasAttribute("data-collapse-able") ||
+      current.closest("[data-collapse-able]");
+
+    if (activeItem) {
+      activeItem.classList.remove("open");
+    }
+    if (target) {
+      activeItem = target;
+      target.classList.add("open");
+    }
+  });
+}
