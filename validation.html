@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation</title>
+    <style>
+        input:invalid {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <input type="text" required minlength="10">
+        <button type="submit">submit</button>
+    </form>
+    <script>
+        const form = document.querySelector('form');
+        const text = document.querySelector('input');
+        // console.log(text.validity);
+        // console.log(form.checkValidity());
+        text.addEventListener('input', (e) => {
+            const {
+                target
+            } = e;
+            if (target.validity.tooShort) {
+                target.setCustomValidity('too short......');
+            } else {
+                target.setCustomValidity('');
+            }
+        })
+    </script>
+</body>
+
+</html>
