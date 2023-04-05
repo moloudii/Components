@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iterators & Generators</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict'
+        //  ITERATORS
+        let test = {
+            name: "mohammad",
+            family: "moloudi",
+            iterated: [],
+            next: function () {
+                if (this.iterated.length >= 2) {
+                    return {
+                        done: true
+                    }
+                }
+                this.iterated.push(this.name);
+                return {
+                    value: (this.iterated.length == 2 ? this.family : this.name),
+                    done: false
+                };
+            },
+            [Symbol.iterator]: function () {
+                return this;
+            }
+        };
+        // for (let i = 1; i < 10; i++) {
+        //     console.log(test.next());
+        // }
+        for (const tmp of test) {
+            console.log(tmp);
+        }
+
+        // GENERATOR
+        function* ownGen() {
+            console.log("first line: ");
+            yield 1;
+            console.log("second line: ");
+            yield 2;
+        }
+        let result = ownGen();
+        console.log('our result is:', result);
+        console.log(result.next());
+        console.log(result.next());
+        console.log(result.next());
+    </script>
+</body>
+
+</html>
