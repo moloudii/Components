@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbols</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict'
+
+        let mySymbol1 = Symbol('test1');
+        let mySymbol2 = Symbol('test2');
+        console.log(mySymbol1, mySymbol2);
+        console.dir(mySymbol1);
+        console.dir(mySymbol2);
+
+        class test {
+            static[Symbol.hasInstance](object) {
+                return true;
+            }
+        }
+
+        let myObj = {
+            [Symbol.hasInstance]: function (obj) {
+                return true;
+            }
+        }
+        console.log([] instanceof myObj);
+
+
+        let numbers = [1, 2, 3];
+        console.log(numbers + 1);
+        numbers[Symbol.toPrimitive] = function () {
+            return 3;
+        }
+        console.log(numbers + 1);
+    </script>
+</body>
+
+</html>
