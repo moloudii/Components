@@ -1,0 +1,19 @@
+.toast{
+    visibility: hidden;
+    width: 250px;
+    background-color: #333;
+    color:#fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    top: 50px;
+    font-size: 17px;
+    margin: auto;
+}
+.toast--show{
+    visibility: visible;
+}
