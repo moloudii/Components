@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+
+<body>
+    <form data-validation>
+        <div>
+            <label for="name">Mobile</label>
+            <input type="text" name="name" required pattern="09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}">
+        </div>
+        <br>
+        <div>
+            <label for="count">Count</label>
+            <input type="text" name="count" required minlength="3">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
